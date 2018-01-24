@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Link;
 
 
 class LinksTableSeeder extends Seeder
@@ -16,10 +17,23 @@ class LinksTableSeeder extends Seeder
 
         for($i = 0; $i < 10; $i++):
             $url = str_random(8);
-            $title = str_random(12).'@ mail.com'; 
-            $user_id = rand(1, 3);
+            $title = str_random(12); 
+            $user_id = rand(1, 15);
             $picture = str_random(8); 
-            $category_id = str_random(12);
+            $category_id = rand(1,3);
+
+            $links[] = [
+                'url'=>$url,
+                'title'=>$title,
+                'user_id'=>$user_id,
+                'picture'=>$picture,
+                'category_id'=>$category_id
+            ];
+            
         endfor;
+
+        foreach($links AS $link):
+            Link::create($link);
+        endforeach;
     }
 }
