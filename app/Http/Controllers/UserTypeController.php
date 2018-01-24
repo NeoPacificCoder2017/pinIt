@@ -51,7 +51,7 @@ class UserTypeController extends Controller
      */
     public function show(UserType $userType)
     {
-        //
+        return view('userTypes.userType')->with('userType', $userType);
     }
 
     /**
@@ -62,7 +62,7 @@ class UserTypeController extends Controller
      */
     public function edit(UserType $userType)
     {
-        //
+        return view('userTypes.userType-form-edit')->with('userType', $userType);
     }
 
     /**
@@ -74,7 +74,8 @@ class UserTypeController extends Controller
      */
     public function update(Request $request, UserType $userType)
     {
-        //
+        $userType->title = $request->title;
+        $userType->save();
     }
 
     /**
@@ -85,6 +86,6 @@ class UserTypeController extends Controller
      */
     public function destroy(UserType $userType)
     {
-        //
+        $userType->delete();
     }
 }
