@@ -15,9 +15,9 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-        $userType = UserType::all();
+        $userTypes = UserType::all();
 
-        return view('userTypes.userTypes', compact($userType));
+        return view('userTypes.userTypes', compact($userTypes));
     }
 
     /**
