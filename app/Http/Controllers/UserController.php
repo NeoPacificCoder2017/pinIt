@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return view('users.users', compact($users));
     }
 
     /**
@@ -23,9 +25,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function new()
     {
-        //
+        return view('users.user-form-new');
     }
 
     /**
@@ -36,7 +38,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->last_name = $request->last_name;
+        $user->first_name = $request->first_name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->user_type_id = $request->user_type_id;
+        $user->save();
     }
 
     /**
