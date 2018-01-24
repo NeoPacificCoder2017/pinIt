@@ -25,9 +25,9 @@ class UserTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function new()
     {
-        return view('userTypes.userType-form-create');
+        return view('userTypes.userType-form-new');
     }
 
     /**
