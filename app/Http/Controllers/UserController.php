@@ -55,7 +55,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('users.user')->with('user', $user);
     }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.user-form-edit')->with('user', $user);
     }
 
     /**
@@ -78,7 +78,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->last_name = $request->last_name;
+        $user->first_name = $request->first_name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->user_type_id = $request->user_type_id;
+        $user->save();
     }
 
     /**
@@ -89,6 +94,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
     }
 }
