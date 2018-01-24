@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LinksTable extends Migration
+class CreateLinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class LinksTable extends Migration
             $table->integer('user_id');
             $table->string('picture',100);
             $table->integer('category_id');
-
+            
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class LinksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('links');
+        Schema::dropIfExists('links');
     }
 }
