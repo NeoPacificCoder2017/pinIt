@@ -15,7 +15,9 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-        //
+        $userType = UserType::all();
+
+        return view('userTypes.userTypes', compact($userType));
     }
 
     /**
@@ -25,7 +27,7 @@ class UserTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('userTypes.userType-form-create');
     }
 
     /**
@@ -36,7 +38,9 @@ class UserTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userType = new UserType;
+        $userType->title = $request->title;
+        $userType->save();
     }
 
     /**
