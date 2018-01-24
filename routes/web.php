@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+                    // Routes for user_types_entity
+Route::get('/users', 'UserController@index');        
+Route::get('/users', 'UserController@new');        
+Route::post('/users', 'UserController@store');        
+Route::get('/users', 'UserController@index');        
+Route::get('/users', 'UserController@index');        
+Route::put('/users', 'UserController@index');        
+Route::delete('/users', 'UserController@index');        
