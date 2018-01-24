@@ -14,7 +14,9 @@ class LinkController extends Controller
      */
     public function index()
     {
-        //
+        $links = Link::all();
+
+        return view('links.links', compact($links));
     }
 
     /**
@@ -22,9 +24,9 @@ class LinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function new()
     {
-        //
+        return view('links.link-form-new');
     }
 
     /**
@@ -35,7 +37,13 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $link = new Link;
+        $link->url = $request->url;
+        $link->title = $request->title;
+        $link->user_id = $request->user_id;
+        $link->picture = $request->picture;
+        $link->category_id = $request->category_id;
+        $link->save();
     }
 
     /**
@@ -46,7 +54,7 @@ class LinkController extends Controller
      */
     public function show(Link $link)
     {
-        //
+        return view('users.user')->with('user', $user);
     }
 
     /**
@@ -57,7 +65,7 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        //
+        return view('user.user-form-edit')->with('user', $user);
     }
 
     /**
@@ -69,7 +77,12 @@ class LinkController extends Controller
      */
     public function update(Request $request, Link $link)
     {
-        //
+        $link->url = $request->url;
+        $link->title = $request->title;
+        $link->user_id = $request->user_id;
+        $link->picture = $request->picture;
+        $link->category_id = $request->category_id;
+        $link->save();
     }
 
     /**
@@ -80,6 +93,6 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
-        //
+        $link->delete();
     }
 }
