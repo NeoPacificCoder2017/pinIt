@@ -12,6 +12,14 @@ class LinksTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $links = [];
+
+        for($i = 0; $i < 10; $i++):
+            $url = str_random(8);
+            $title = str_random(12).'@ mail.com'; 
+            $user_id = rand(1, 3);
+            $picture = str_random(8); 
+            $category_id = str_random(12);
+        endfor;
     }
 }
