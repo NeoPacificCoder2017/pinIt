@@ -14,16 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-            // Routes for Authentification
-Auth::routes();
-        
-Route::get('/home', 'HomeController@index')->name('home');
 
-            //Routes for links_entity
-Route::get('/links', 'LinkController@index');
-Route::get('/links/new', 'LinkController@new');
-Route::post('/links', 'LinkController@store');
-Route::get('/links/{linkId}', 'LinkController@show');
-Route::get('/links/{linkId}/edit', 'LinkController@edit');
-Route::put('/links/{linkId}', 'LinkController@update');
-Route::delete('/links/{linkId}', 'LinkController@destroy');
+//Routes for categories_entity
+Route::get('/categories', 'categoryController@index');
+Route::get('/categories/new', 'categoryController@new');
+Route::post('/categories', 'categoryController@store');
+Route::get('/categories/{categoryId}', 'categoryController@show');
+Route::get('/categories/{categoryId}/edit', 'categoryController@edit');
+Route::put('/categories/{categoryId}', 'categoryController@update');
+Route::delete('/categories/{categoryId}', 'categoryController@destroy');

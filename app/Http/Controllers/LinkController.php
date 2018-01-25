@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Link;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
@@ -63,8 +65,10 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function edit(Link $link)
+    public function edit($id)
     {
+        $link = Link::find($id);
+
         return view('user.user-form-edit')->with('user', $user);
     }
 
@@ -75,8 +79,9 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Link $link)
+    public function update(Request $request, $id)
     {
+        $link = Link::find($id);
         $link->url = $request->url;
         $link->title = $request->title;
         $link->user_id = $request->user_id;
@@ -91,8 +96,9 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Link $link)
+    public function destroy($id)
     {
+        $link = Link::find($id);
         $link->delete();
     }
 }
