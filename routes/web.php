@@ -21,9 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Routes for links_entity
 Route::get('/links', 'LinkController@index');
-Route::get('/links/new', 'LinkController@new');
+Route::get('/links/new', 'LinkController@new')->name('link.new');
 Route::post('/links', 'LinkController@store');
 Route::get('/links/{linkId}', 'LinkController@show');
 Route::get('/links/{linkId}/edit', 'LinkController@edit');
-Route::put('/links/{linkId}', 'LinkController@update');
+Route::put('/links/{linkId}', 'LinkController@update')->name('link.update');
 Route::delete('/links/{linkId}', 'LinkController@destroy');

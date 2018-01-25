@@ -54,9 +54,10 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function show(Link $link)
+    public function show($id)
     {
-        return view('users.user')->with('user', $user);
+        $user = Link::find($id);
+        return view('links.link')->with('link', $link);
     }
 
     /**
@@ -69,7 +70,7 @@ class LinkController extends Controller
     {
         $link = Link::find($id);
 
-        return view('user.user-form-edit')->with('user', $user);
+        return view('links.link')->with('link', $link);
     }
 
     /**
