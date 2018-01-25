@@ -31,6 +31,16 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -40,7 +50,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
             'user_type_id' => 'required|numeric',
@@ -58,7 +67,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'lastname' => $data['lastname'],
             'firstname' => $data['firstname'],
             'user_type_id' => $data['user_type_id'],
