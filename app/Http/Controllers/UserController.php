@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -44,6 +45,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->user_type_id = $request->user_type_id;
+        $user->remember_token = $request->remember_token;
         $user->save();
     }
 
@@ -55,7 +57,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.user')->with('user', $user);
+        return view('user')->with('user', $user);
     }
 
     /**
@@ -64,9 +66,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('user.user-form-edit')->with('user', $user);
+        $user = User::find($id);
+        
+        return view('user-form-edit')->with('user', $user);
     }
 
     /**
@@ -76,8 +80,9 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
+        $user = User::find($id);
         $user->last_name = $request->last_name;
         $user->first_name = $request->first_name;
         $user->email = $request->email;
@@ -92,8 +97,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
+
         $user->delete();
     }
 }
