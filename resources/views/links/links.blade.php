@@ -24,6 +24,8 @@
                 <td>{{$link->category_id}}</td>
                 <td>{{$link->created_at}}</td>
                 <td>{{$link->updated_at}}</td>
+                <td><a href="{{action('LinkController@edit', $link->id)}}"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+                    <a href="{{action('LinkController@show', $link->id)}}"><button type="button" class="btn btn-primary btn-sm">show</button></a></td>
             </tr>
         @endforeach
         </tbody>
