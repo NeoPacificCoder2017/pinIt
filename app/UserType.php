@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserType extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['title'];
+
     public function users() {
     /**
      * Get the users for the user type.

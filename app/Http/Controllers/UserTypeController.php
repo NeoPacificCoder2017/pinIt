@@ -17,7 +17,7 @@ class UserTypeController extends Controller
     {
         $userTypes = UserType::all();
 
-        return view('userTypes.userTypes', compact($userTypes));
+        return view('userTypes', compact('userTypes'));
     }
 
     /**
@@ -27,7 +27,7 @@ class UserTypeController extends Controller
      */
     public function new()
     {
-        return view('userTypes.userType-form-new');
+        return view('userType-form-new');
     }
 
     /**
@@ -49,9 +49,11 @@ class UserTypeController extends Controller
      * @param  \App\UserType  $userType
      * @return \Illuminate\Http\Response
      */
-    public function show(UserType $userType)
+    public function show($id)
     {
-        return view('userTypes.userType')->with('userType', $userType);
+        $userType = UserType::find($id);
+
+        return view('userType')->with('userType', $userType);
     }
 
     /**
@@ -60,9 +62,11 @@ class UserTypeController extends Controller
      * @param  \App\UserType  $userType
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserType $userType)
+    public function edit($id)
     {
-        return view('userTypes.userType-form-edit')->with('userType', $userType);
+        $userType = UserType::find($id);
+
+        return view('userType-form-edit')->with('userType', $userType);
     }
 
     /**
@@ -72,8 +76,9 @@ class UserTypeController extends Controller
      * @param  \App\UserType  $userType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserType $userType)
+    public function update(Request $request, $id)
     {
+        $userType = UserType::find($id);
         $userType->title = $request->title;
         $userType->save();
     }
@@ -84,8 +89,9 @@ class UserTypeController extends Controller
      * @param  \App\UserType  $userType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserType $userType)
+    public function destroy($id)
     {
+        $userType = User::find($id);
         $userType->delete();
     }
 }
