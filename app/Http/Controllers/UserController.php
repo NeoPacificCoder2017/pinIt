@@ -44,7 +44,7 @@ class UserController extends Controller
         $user->first_name = $request->first_name;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->user_type_id = $request->user_type_id;
+        if(!empty($request->user_type_id)) $user->user_type_id = $request->user_type_id;
         $user->remember_token = $request->remember_token;
         $user->save();
     }
