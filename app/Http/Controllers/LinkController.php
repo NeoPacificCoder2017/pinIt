@@ -56,7 +56,7 @@ class LinkController extends Controller
      */
     public function show($id)
     {
-        $user = Link::find($id);
+        $link = Link::find($id);
         return view('links.link')->with('link', $link);
     }
 

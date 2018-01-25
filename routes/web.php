@@ -26,4 +26,4 @@ Route::post('/links', 'LinkController@store');
 Route::get('/links/{linkId}', 'LinkController@show');
 Route::get('/links/{linkId}/edit', 'LinkController@edit');
 Route::put('/links/{linkId}', 'LinkController@update')->name('link.update');
-Route::delete('/links/{linkId}', 'LinkController@destroy');
+Route::delete('/links/{linkId}', 'LinkController@destroy')->name('link.destroy');
