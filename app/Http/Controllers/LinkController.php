@@ -16,7 +16,7 @@ class LinkController extends Controller
     {
         $links = Link::all();
 
-        return view('links.links', compact($links));
+        return view('links.links', compact('links'));
     }
 
     /**

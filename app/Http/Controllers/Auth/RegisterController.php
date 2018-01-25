@@ -31,26 +31,12 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-
-    protected function guard()
-    {
-        return Auth::guard('guard-name');
-    }
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
