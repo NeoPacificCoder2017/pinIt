@@ -28,7 +28,7 @@
             <td>{{$user->created_at}}</td>
             <td>{{$user->updated_at}}</td>
             <td><a href="{{action('UserController@edit', $user->id)}}"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
-                <a href="{{action('UserController@destroy', $user->id)}}"><button type="button" class="btn btn-primary btn-sm">Delete</button></a></td>
+                <a href="{{action('UserController@show', $user->id)}}"><button type="button" class="btn btn-primary btn-sm">show</button></a></td>
         </tr>
     @endforeach
     </tbody>
