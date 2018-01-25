@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Routes for categories_entity
+Route::get('/categories', 'CategoryController@index');
+Route::get('/categories/new', 'CategoryController@new')->name('category.new');
+Route::post('/categories', 'CategoryController@store');
+Route::get('/categories/{categoryId}', 'CategoryController@show');
+Route::get('/categories/{categoryId}/edit', 'CategoryController@edit');
+Route::put('/categories/{categoryId}', 'CategoryController@update')->name('category.update');
+Route::delete('/categories/{categoryId}', 'CategoryController@destroy');
