@@ -91,7 +91,7 @@ class UserTypeController extends Controller
      */
     public function destroy($id)
     {
-        $userType = User::find($id);
+        $userType = UserType::find($id);
         $userType->delete();
     }
 }
