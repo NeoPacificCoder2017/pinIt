@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<<<<<<< HEAD
     <title>{{ config('app.Pin It', 'Pin It') }}</title>
+=======
+    <title>{{ config('app.name', 'Pin It') }}</title>
+>>>>>>> 55e7bd583d1076e583f0a3d61e3a4e08e0ba55c8
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,7 +33,14 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
+<<<<<<< HEAD
                         {{ config('app.Pin It', 'Pin It') }}
+=======
+                        {{ config('app.name', 'Pin It') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/home/users') }}">
+                        {{ config('app.firstname', 'Users Infos') }}
+>>>>>>> 55e7bd583d1076e583f0a3d61e3a4e08e0ba55c8
                     </a>
                 </div>
 
@@ -48,7 +59,11 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+<<<<<<< HEAD
                                     {{ Auth::user()->name }} <span class="caret"></span>
+=======
+                                    {{ Auth::user()->firstname }} <span class="caret"></span>
+>>>>>>> 55e7bd583d1076e583f0a3d61e3a4e08e0ba55c8
                                 </a>
 
                                 <ul class="dropdown-menu">
