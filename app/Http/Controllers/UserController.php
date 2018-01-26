@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('users', compact('users'));
+        return view('users.users', compact('users'));
     }
 
     /**
@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function new()
     {
-        return view('user-form-new');
+        return view('users.user-form-new');
     }
 
     /**
@@ -59,7 +59,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         
-        return view('user')->with('user', $user);
+        return view('users.user')->with('user', $user);
     }
 
     /**
@@ -72,7 +72,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         
-        return view('user-form-edit')->with('user', $user);
+        return view('users.user-form-edit')->with('user', $user);
     }
 
     /**
@@ -107,7 +107,7 @@ class UserController extends Controller
 
         $users = User::all();
 
-        return view('users')->with('users', $users);
+        return view('users.users')->with('users', $users);
 
     }
 }
