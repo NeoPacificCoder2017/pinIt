@@ -50,9 +50,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($categoryId)
     {
-        return view('categories.category')->with('category', $user);
+        $category = Category::find($categoryId);
+        return view('categories.category')->with('category', $category);
     }
 
     /**
