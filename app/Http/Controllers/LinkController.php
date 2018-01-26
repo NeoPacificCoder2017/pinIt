@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
+
+    public function getUsers($linkId) {
+        $link = Link::find($linkId)->users()->get();
+
+        return view('links.links')->with('link', $link);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +34,8 @@ class LinkController extends Controller
      */
     public function new()
     {
+        // $user = User::find($id);
+        // return view('links.link-form-new')->wtih('user', $user);
         return view('links.link-form-new');
     }
 
@@ -42,7 +50,7 @@ class LinkController extends Controller
         $link = new Link;
         $link->url = $request->url;
         $link->title = $request->title;
-        $link->user_id = $request->user_id;
+        $link->user_id = $request->id;
         $link->picture = $request->picture;
         $link->category_id = $request->category_id;
         $link->save();

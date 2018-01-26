@@ -25,7 +25,7 @@ class Link extends Model
 //     'password', 'remember_token',
 // ];
 
-    public function link() {
+    public function users() {
         /**
          * Get the users for the link.
          */

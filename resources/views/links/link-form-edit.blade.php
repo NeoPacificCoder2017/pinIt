@@ -8,6 +8,9 @@
     {!! Form::label('title', 'Titre') !!}
     {!! Form::text('title', $link->title) !!}
 
+    {!! Form::label('user_id', 'User Id') !!}
+    {!! Form::text('user_id', $link->user_id) !!}
+
     {!! Form::label('picture', 'Nom image') !!}
     {!! Form::text('picture', $link->picture) !!}
 
