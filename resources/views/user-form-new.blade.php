@@ -1,7 +1,15 @@
+@extends('layouts.app')
+
+@section('content')
+
 {!! Form::open(['url' => '/users']) !!}
 
 	<formcaption>formulaire de creation d'un utilisateur</formcaption><br />
-    last_name : <input type="text" name="last_name"/><br />
+
+    
+    {!! Form::label('last_name', 'last_name') !!}<br />    
+    {!! Form::text('last_name') !!}
+  
     first_name : <input type="text" name="first_name"/><br />
     email : <input type="mail" name="email"/><br />
     password : <input type="password" name="password"/><br />
@@ -10,3 +18,5 @@
     <input type="submit" value="valider" />
 	
 {!! Form::close() !!}
+
+@endsection

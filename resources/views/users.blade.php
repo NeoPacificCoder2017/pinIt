@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <table>
     <caption>Liste des utilisateurs</caption>
     <a href="{{action('UserController@new')}}"><button type="button" class="btn btn-primary btn-sm">New</button></a>
@@ -44,3 +47,5 @@
     @endforeach
     </tbody>
 </table>
+
+@endsection
