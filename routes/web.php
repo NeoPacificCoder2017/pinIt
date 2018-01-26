@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+            //Routes for Authentification
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
             //Routes for users_entity
 Route::get('/users', 'UserController@index');
 Route::get('/users/new', 'UserController@new')->name('user.new');
@@ -23,7 +28,3 @@ Route::get('/users/{userId}', 'UserController@show');
 Route::get('/users/{userId}/edit', 'UserController@edit');
 Route::put('/users/{userId}', 'UserController@update')->name('user.update');
 Route::delete('/users/{userId}', 'UserController@destroy')->name('user.destroy');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
