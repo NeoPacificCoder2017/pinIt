@@ -79,11 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-<<<<<<< HEAD
                     Pin It
-=======
-                   Pin It
->>>>>>> 55e7bd583d1076e583f0a3d61e3a4e08e0ba55c8
                 </div>
 
                 <div class="links">

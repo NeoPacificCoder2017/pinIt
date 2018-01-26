@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
-
+    /**
+     * Get the users of the link.
+     */
     public function getUsers($linkId) {
         $link = Link::find($linkId)->users()->get();
 
         return view('links.links')->with('link', $link);
     }
+    
     /**
      * Display a listing of the resource.
      *

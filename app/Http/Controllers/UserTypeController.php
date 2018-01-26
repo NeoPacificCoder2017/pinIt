@@ -17,7 +17,7 @@ class UserTypeController extends Controller
     {
         $userTypes = UserType::all();
 
-        return view('userTypes', compact('userTypes'));
+        return view('userTypes.userTypes', compact('userTypes'));
     }
 
     /**
@@ -27,7 +27,7 @@ class UserTypeController extends Controller
      */
     public function new()
     {
-        return view('userType-form-new');
+        return view('userTypes.userType-form-new');
     }
 
     /**
@@ -53,7 +53,7 @@ class UserTypeController extends Controller
     {
         $userType = UserType::find($id);
 
-        return view('userType')->with('userType', $userType);
+        return view('userTypes.userType')->with('userType', $userType);
     }
 
     /**
@@ -66,7 +66,7 @@ class UserTypeController extends Controller
     {
         $userType = UserType::find($id);
 
-        return view('userType-form-edit')->with('userType', $userType);
+        return view('userTypes.userType-form-edit')->with('userType', $userType);
     }
 
     /**
