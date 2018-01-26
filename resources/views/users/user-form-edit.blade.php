@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 {!! Form::open(['route' => array('user.update', $user->id), 'method' => 'put']) !!}
 
 	<formcaption>formulaire de modification d'un utilisateur</formcaption><br />
@@ -10,3 +13,5 @@
     <input type="submit" value="valider" />
 
 {!! Form::close() !!}
+
+@endsection

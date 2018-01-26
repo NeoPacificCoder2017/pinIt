@@ -109,5 +109,8 @@ class LinkController extends Controller
     {
         $link = Link::find($id);
         $link->delete();
+
+        $link = Link::all();
+        return view('links.lnks')->with('links', $lnk);
     }
 }

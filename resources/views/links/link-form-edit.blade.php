@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 {!! Form::open(['route' => array('link.update', $link->id), 'method' => 'put']) !!}
 
 	<formcaption>formulaire de modification d'un lien</formcaption><br />
@@ -21,3 +24,5 @@
     <input type="submit" value="valider" />
 
 {!! Form::close() !!}
+
+@endsection

@@ -36,7 +36,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) //Creer une nouvelle catégorie
     {
         $category = new Category;
         $category->user_id = $request->user_id;
@@ -66,7 +66,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view('categories.category-form-edit')->with('link', $link);
+        return view('categories.category-form-edit')->with('category', $category);
     }
 
     /**

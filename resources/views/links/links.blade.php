@@ -1,6 +1,8 @@
-<table>
+@extends('layouts.app')
+
+@section('content')<table>
         <caption>Liste des liens</caption>
-        <button type="submit">
+        <a href="{{action('LinkController@new')}}"><button type="button" class="btn btn-primary btn-sm">New</button></a>
         <thead>
             <tr>
                 <th>id</th>
@@ -30,3 +32,4 @@
         @endforeach
         </tbody>
      </table>
+    @endsection

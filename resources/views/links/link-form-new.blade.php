@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 {!! Form::open(['url' => '/links']) !!}
 
 	<formcaption>formulaire de creation d'un liens</formcaption><br />
@@ -20,3 +23,4 @@
     {!! Form::submit('Valider') !!}
     
 {!! Form::close() !!}
+@endsection
