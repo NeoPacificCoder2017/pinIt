@@ -328,9 +328,12 @@ class ComposerStaticInit82074a12c02823db41b65438be339ceb
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
 <<<<<<< HEAD
 <<<<<<< HEAD
-        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
+<<<<<<< HEAD
 =======
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+>>>>>>> users_entity
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
+=======
         'App\\Http\\Controllers\\LinkController' => __DIR__ . '/../..' . '/app/Http/Controllers/LinkController.php',
 >>>>>>> 55e7bd583d1076e583f0a3d61e3a4e08e0ba55c8
 =======
