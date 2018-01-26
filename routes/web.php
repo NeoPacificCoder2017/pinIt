@@ -44,3 +44,11 @@ Route::get('/links/{linkId}', 'LinkController@show');
 Route::get('/links/{linkId}/edit', 'LinkController@edit')->name('link.edit');
 Route::put('/links/{linkId}', 'LinkController@update')->name('link.update');
 Route::delete('/links/{linkId}', 'LinkController@destroy')->name('link.destroy');
+                    // Routes for user_types_entity
+Route::get('/userTypes', 'UserTypeController@index');        
+Route::get('/userTypes/new', 'UserTypeController@new')->name('userType.new');        
+Route::post('/userTypes', 'UserTypeController@store');        
+Route::get('/userTypes/{userTypeId}', 'UserTypeController@show');        
+Route::get('/userTypes/{userTypeId}/edit', 'UserTypeController@edit');        
+Route::put('/userTypes/{userTypeId}', 'UserTypeController@update')->name('userType.update');        
+Route::delete('/userTypes/{userTypeId}', 'UserTypeController@destroy')->name('userType.destroy');        

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 =======
 <<<<<<< HEAD
         // $this->call(UsersTableSeeder::class);
+<<<<<<< HEAD
         $this->call(CategoriesTableSeeder::class);
         $this->command->info("Categories Seeder GOOD");
 =======
@@ -24,5 +25,9 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Seeder Links GOOD');
 >>>>>>> links_entity
 >>>>>>> 55e7bd583d1076e583f0a3d61e3a4e08e0ba55c8
+=======
+        $this->call(UserTypesTableSeeder::class);
+        $this->command->info('user_types table seeded');
+>>>>>>> user_types_entity
     }
 }
