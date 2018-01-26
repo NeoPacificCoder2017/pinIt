@@ -181,10 +181,7 @@ return [
          * require laravelcollective/html...
          */
         Collective\Html\HtmlServiceProvider::class,
-<<<<<<< HEAD
-=======
 
->>>>>>> user_types_entity
     ],
 
     /*
@@ -235,19 +232,11 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         /*
-<<<<<<< HEAD
-         * require laravelcollective/html
-=======
-         *require laravelcollective/html...
->>>>>>> user_types_entity
+         * require laravelcollective/html...
          */
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
 
-<<<<<<< HEAD
-=======
-
->>>>>>> user_types_entity
     ],
 
 ];
