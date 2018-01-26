@@ -42,4 +42,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Category');
     }
+
+    /**
+     * Get the links for the user.
+     */
+    public function link()
+    {
+        return $this->belongsTo('App\Link');
+    }
 }

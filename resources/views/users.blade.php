@@ -27,8 +27,19 @@
             <td>{{$user->remember_token}}</td>
             <td>{{$user->created_at}}</td>
             <td>{{$user->updated_at}}</td>
-            <td><a href="{{action('UserController@edit', $user->id)}}"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
-                <a href="{{action('UserController@show', $user->id)}}"><button type="button" class="btn btn-primary btn-sm">show</button></a></td>
+            <td>
+                {!! Form::open(['action' => array('UserController@edit', $user->id)]) !!}            
+                {!! Form::submit('Modifier') !!}                        
+                {!! Form::close() !!}
+
+                {!! Form::open(['action' => array('UserController@show', $user->id)]) !!}            
+                {!! Form::submit('Voir') !!}                        
+                {!! Form::close() !!}
+                
+                {!! Form::open(['action' => array('UserController@destroy', $user->id), 'method' => 'delete']) !!}
+                {!! Form::submit('Supprimer') !!}                            
+                {!! Form::close() !!}
+                                    </td>
         </tr>
     @endforeach
     </tbody>
