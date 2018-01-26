@@ -28,11 +28,11 @@
             <td>{{$user->created_at}}</td>
             <td>{{$user->updated_at}}</td>
             <td>
-                {!! Form::open(['action' => array('UserController@edit', $user->id)]) !!}            
+                {!! Form::open(['action' => array('UserController@edit', $user->id), 'method' => 'get']) !!}            
                 {!! Form::submit('Modifier') !!}                        
                 {!! Form::close() !!}
 
-                {!! Form::open(['action' => array('UserController@show', $user->id)]) !!}            
+                {!! Form::open(['action' => array('UserController@show', $user->id), 'method' => 'get']) !!}            
                 {!! Form::submit('Voir') !!}                        
                 {!! Form::close() !!}
                 
