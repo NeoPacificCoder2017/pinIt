@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Link;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $links = Link::all();
+        $categories = Category::all();
+
+        return view('home')->with(['links' => $links, 'categories' => $categories]);
     }
 }

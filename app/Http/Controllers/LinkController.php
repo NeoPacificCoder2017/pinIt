@@ -2,22 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Link;
+use App\Link;;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+use App\Category;
 
 class LinkController extends Controller
-{
+{  
     /**
-     * Get the users of the link.
+     * Display the specified resource.
+     *
+     * @param  \App\Link  $link
+     * @return \Illuminate\Http\Response
      */
-    public function getUsers($linkId) {
-        $link = Link::find($linkId)->users()->get();
+    public function getLinksByCategory($categoryId)
+    {
+        $links = Link::all()->where('category_id', $categoryId);
+        $categories = Category::all();
 
-        return view('links.links')->with('link', $link);
+        return view('home')->with(['links' => $links, 'categories' => $categories]);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +33,9 @@ class LinkController extends Controller
     public function index()
     {
         $links = Link::all();
+        $categories = Category::all();
 
-        return view('links.links', compact('links'));
+        return view('home')->with(['links' => $links, 'categories' => $categories]);
     }
 
     /**
@@ -65,9 +73,9 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($linkId)
     {
-        $link = Link::find($id);
+        $link = Link::find($linkId);
         return view('links.link')->with('link', $link);
     }
 
@@ -77,9 +85,9 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($linkId)
     {
-        $link = Link::find($id);
+        $link = Link::find($linkId);
 
         return view('links.link')->with('link', $link);
     }
@@ -91,9 +99,9 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $linkId)
     {
-        $link = Link::find($id);
+        $link = Link::find($linkId);
         $link->url = $request->url;
         $link->title = $request->title;
         $link->user_id = $request->user_id;
@@ -108,9 +116,9 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($linkId)
     {
-        $link = Link::find($id);
+        $link = Link::find($linkId);
         $link->delete();
     }
 }

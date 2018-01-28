@@ -14,9 +14,9 @@ class Category extends Model
     protected $fillable = ['user_id', 'title'];
     
    /**
-    * Get the users for the category.
+    * Get the links of the category.
     */
-    public function category() 
+    public function links() 
     {
         return $this->hasMany('App\Link');
     }

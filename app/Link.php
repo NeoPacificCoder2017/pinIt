@@ -16,20 +16,19 @@ class Link extends Model
         'url', 'title', 'user_id', 'picture', 'category_id'
     ];
 
-   /** 
-    * The attributes that should be hidden for arrays.
-    *
-    * @var array
-    */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
    /**
     * Get the users for the link.
     */
     public function users() 
     {
         return $this->hasMany('App\User');
+    }
+
+      /**
+    * Get the category for the link.
+    */
+    public function category() 
+    {
+        return $this->belongsTo('App\Category');
     }
 }

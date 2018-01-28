@@ -1,3 +1,12 @@
+{!! Form::label('listOfCategory', 'Filtrer par categorie') !!}
+<select name='listOfCategory' onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+    <option value="{{route('home')}}" >Toutes les catégories</option>
+    @foreach($categories as $category)
+    <option value="{{route('links.getLinksByCategory', $category->id)}}" id="{{$category->id}}">{{$category->title}}</option>
+    @endforeach
+</select>
+
+@section('listOfCategory')
 <table>
         <caption>Liste des catégories</caption>
         <a href="{{action('CategoryController@new')}}"><button type="button" class="btn btn-primary btn-sm">New</button></a>
@@ -25,3 +34,5 @@
         @endforeach
         </tbody>
     </table>
+
+@endsection  

@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function getDistinctCategories()
+    {
+        $category = Category::all()->distinct()->get();
+        return view('categories.categories')->with('category', $category);
+    }
+
     /**
      * Display a listing of the resource.
      *

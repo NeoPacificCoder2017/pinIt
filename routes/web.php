@@ -29,23 +29,15 @@ Route::get('/users/{userId}/edit', 'UserController@edit');
 Route::put('/users/{userId}', 'UserController@update')->name('user.update');
 Route::delete('/users/{userId}', 'UserController@destroy')->name('user.destroy');
 
-            //Routes for categories_entity
-Route::get('/categories', 'CategoryController@index')->name('category.index');
-Route::get('/categories/new', 'CategoryController@new')->name('category.new');
-Route::post('/categories', 'CategoryController@store')->name('category.store');
-Route::get('/categories/{categoryId}', 'CategoryController@show')->name('category.show');
-Route::get('/categories/{categoryId}/edit', 'CategoryController@edit')->name('category.edit');
-Route::put('/categories/{categoryId}', 'CategoryController@update')->name('category.update');
-Route::delete('/categories/{categoryId}', 'CategoryController@destroy')->name('category.destroy');
-
-                    //Routes for links_entity
-Route::get('/links', 'LinkController@index');
-Route::get('/links/new', 'LinkController@new')->name('link.new');
+                //Routes for links_entity
+Route::get('/links', 'LinkController@index')->name('links.index');
+Route::get('/links/new', 'LinkController@new')->name('links.new');
 Route::post('/links', 'LinkController@store');
-Route::get('/links/{linkId}', 'LinkController@show');
-Route::get('/links/{linkId}/edit', 'LinkController@edit')->name('link.edit');
-Route::put('/links/{linkId}', 'LinkController@update')->name('link.update');
-Route::delete('/links/{linkId}', 'LinkController@destroy')->name('link.destroy');
+//Route::get('/links/{linkId}', 'LinkController@show');
+Route::get('/links/{linkId}/edit', 'LinkController@edit')->name('links.edit');
+Route::put('/links/{linkId}', 'LinkController@update')->name('links.update');
+Route::delete('/links/{linkId}', 'LinkController@destroy')->name('links.destroy');
+Route::get('/links/{linkId}', 'LinkController@getLinksByCategory')->name('links.getLinksByCategory');
 
                     // Routes for user_types_entity
 Route::get('/userTypes', 'UserTypeController@index');        
@@ -54,4 +46,14 @@ Route::post('/userTypes', 'UserTypeController@store');
 Route::get('/userTypes/{userTypeId}', 'UserTypeController@show');        
 Route::get('/userTypes/{userTypeId}/edit', 'UserTypeController@edit');        
 Route::put('/userTypes/{userTypeId}', 'UserTypeController@update')->name('userType.update');        
-Route::delete('/userTypes/{userTypeId}', 'UserTypeController@destroy')->name('userType.destroy');        
+Route::delete('/userTypes/{userTypeId}', 'UserTypeController@destroy')->name('userType.destroy'); 
+
+            //Routes for categories_entity
+Route::get('/categories', 'CategoryController@index')->name('category.index');
+Route::get('/categories/new', 'CategoryController@new')->name('category.new');
+Route::post('/categories', 'CategoryController@store')->name('category.store');
+Route::get('/categories/{categoryId}', 'CategoryController@show')->name('category.show');
+Route::get('/categories/{categoryId}/edit', 'CategoryController@edit')->name('category.edit');
+Route::put('/categories/{categoryId}', 'CategoryController@update')->name('category.update');
+Route::delete('/categories/{categoryId}', 'CategoryController@destroy')->name('category.destroy');       
+Route::get('/categories/distinct', 'CategoryController@getDistinctCategories')->name('category.getDistinctCategories');       

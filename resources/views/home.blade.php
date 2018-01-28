@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                     @include('categories.categories', $categories)
+                     @include('links.links', $links)
                 </div>
             </div>
         </div>
