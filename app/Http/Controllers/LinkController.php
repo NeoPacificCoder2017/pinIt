@@ -120,5 +120,9 @@ class LinkController extends Controller
     {
         $link = Link::find($linkId);
         $link->delete();
+
+        
+        return redirect()->action('HomeController@index');
+        
     }
 }
