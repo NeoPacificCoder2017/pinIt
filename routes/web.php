@@ -30,14 +30,14 @@ Route::put('/users/{userId}', 'UserController@update')->name('user.update');
 Route::delete('/users/{userId}', 'UserController@destroy')->name('user.destroy');
 
                 //Routes for links_entity
-Route::get('/links', 'LinkController@index')->name('links.index');
-Route::get('/links/new', 'LinkController@new')->name('links.new');
-Route::post('/links', 'LinkController@store')->name('links.store');
-Route::get('/links/{linkId}', 'LinkController@show')->name('links.show');
-Route::get('/links/{linkId}/edit', 'LinkController@edit')->name('links.edit');
-Route::put('/links/{linkId}', 'LinkController@update')->name('links.update');
-Route::delete('/links/{linkId}', 'LinkController@destroy')->name('links.destroy');
-Route::get('/links/{linkId}', 'LinkController@getLinksByCategory')->name('links.getLinksByCategory');
+Route::get('/links', 'LinkController@index')->name('link.index');
+Route::get('/links/new', 'LinkController@new')->name('link.new');
+Route::post('/links', 'LinkController@store')->name('link.store');
+Route::get('/links/{linkId}', 'LinkController@show')->name('link.show');
+Route::get('/links/{linkId}/edit', 'LinkController@edit')->name('link.edit');
+Route::put('/links/{linkId}', 'LinkController@update')->name('link.update');
+Route::delete('/links/{linkId}', 'LinkController@destroy')->name('link.destroy');
+Route::get('/links/{linkId}', 'LinkController@getLinksByCategory')->name('link.getLinksByCategory');
 
                     // Routes for user_types_entity
 Route::get('/userTypes', 'UserTypeController@index')->name('userType.index');        

@@ -1,5 +1,6 @@
 <?php
 
+use App\UserType;
 use Illuminate\Database\Seeder;
 
 class UserTypesTableSeeder extends Seeder
@@ -11,6 +12,8 @@ class UserTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\UserType::class, 5)->create();
+        UserType::create(['title' => 'admin']);
+            
+        UserType::create(['title' => 'guess']);
     }
 }

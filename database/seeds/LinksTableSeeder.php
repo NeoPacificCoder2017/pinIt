@@ -13,6 +13,6 @@ class LinksTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Link::class, 20)->create();
+        factory(Link::class, 100)->create();
     }
 }

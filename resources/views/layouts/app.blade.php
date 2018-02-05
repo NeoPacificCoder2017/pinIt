@@ -28,12 +28,19 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.Pin It', 'Pin It') }}
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                        {{ config('app.Acceuil', 'Acceuil') }}
                     </a>
-                    <a class="navbar-brand" href="{{ url('/home/users') }}">
-                        {{ config('app.firstname', 'Users Infos') }}
+                    <a class="navbar-brand" href="{{ action('UserController@show', Auth::id()) }}">
+                        {{ config('app.firstname', 'Mon Profil') }}
                     </a>
+
+                    @if(Auth::user()->userType()->first()->title == 'admin')
+                    <a class="navbar-brand" href="{{ action('UserController@index') }}">
+                        {{ config('app.firstname', 'Liste des utilisateurs') }}
+                    </a>
+                    @endif
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -51,7 +58,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->firstname }} <span class="caret"></span>
+                                    {{ Auth::user()->first_name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">

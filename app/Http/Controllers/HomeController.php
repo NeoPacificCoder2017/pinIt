@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $links = Link::all();
-        $categories = Category::all();
+        $links = Link::all()->sortByDesc('created_at');
+        $categories = Category::all()->sortBy('title');
 
         return view('home')->with(['links' => $links, 'categories' => $categories]);
     }

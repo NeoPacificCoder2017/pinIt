@@ -17,7 +17,7 @@ class Link extends Model
     ];
 
    /**
-    * Get the users for the link.
+    * Get the users of the link.
     */
     public function users() 
     {

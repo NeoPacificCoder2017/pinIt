@@ -19,8 +19,14 @@ class LinkController extends Controller
      */
     public function getLinksByCategory($categoryId)
     {
-        $links = Link::all()->where('category_id', $categoryId);
-        $categories = Category::all();
+        if($categoryId == 0)
+        {
+            $links = Link::all();
+            $categories = Category::all();
+        } else {
+            $links = Link::all()->where('category_id', $categoryId);
+            $categories = Category::all();
+        }
 
         return view('home')->with(['links' => $links, 'categories' => $categories]);
     }
@@ -89,7 +95,9 @@ class LinkController extends Controller
     {
         $link = Link::find($linkId);
 
-        return view('links.link')->with('link', $link);
+        $categories = Category::all();
+
+        return view('links.link-form-edit')->with(['link' => $link, 'categories' => $categories]);
     }
 
     /**
@@ -104,10 +112,11 @@ class LinkController extends Controller
         $link = Link::find($linkId);
         $link->url = $request->url;
         $link->title = $request->title;
-        $link->user_id = $request->user_id;
         $link->picture = $request->picture;
-        $link->category_id = $request->category_id;
+        $link->category_id = $request->listOfCategory;
         $link->save();
+
+        return view('links.link')->with('link', $link);
     }
 
     /**
@@ -121,7 +130,6 @@ class LinkController extends Controller
         $link = Link::find($linkId);
         $link->delete();
 
-        
         return redirect()->action('HomeController@index');
         
     }

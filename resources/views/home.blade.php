@@ -13,9 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
+                    @include('categories.categories')
+                    @include('links.links')
 
-                     @include('categories.categories', $categories)
-                     @include('links.links', $links)
                 </div>
             </div>
         </div>

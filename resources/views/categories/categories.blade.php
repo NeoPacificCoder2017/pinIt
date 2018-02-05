@@ -1,8 +1,8 @@
 {!! Form::label('listOfCategory', 'Filtrer par categorie') !!}
-<select name='listOfCategory' onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-    <option value="{{route('home')}}" >Toutes les catégories</option>
+<select name='listOfCategory' onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" class="form-control">
+    <option value="{{route('link.index')}}">Toutes les catégories</option>
     @foreach($categories as $category)
-    <option value="{{route('links.getLinksByCategory', $category->id)}}" id="{{$category->id}}">{{$category->title}}</option>
+    <option value="{{route('link.getLinksByCategory', $category->id)}}" id="{{$category->id}}">{{$category->title}}</option>
     @endforeach
 </select>
 

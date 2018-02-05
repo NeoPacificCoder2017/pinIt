@@ -3,6 +3,7 @@
     
     <thead>
         <tr>
+            <th>id</th>
             <th>title</th>
             <th>picture</th>
             <th>category</th>
@@ -12,6 +13,7 @@
     <tbody>
          @foreach($links as $link):
             <tr>
+                <td>{{$link->id}}</td>
                 <td>{{$link->title}}</td>
                 <td>{{$link->picture}}</td>
                 <td>{{$link->category()->first()->title}}</td>

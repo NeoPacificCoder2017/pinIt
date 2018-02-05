@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Link;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -58,8 +59,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        
-        return view('users.user')->with('user', $user);
+        $links = Link::where('user_id', $user->id)->get();
+        return view('users.user')->with(compact('user', 'links'));
     }
 
     /**
