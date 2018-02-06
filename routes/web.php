@@ -19,6 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home/users', 'UserController@index');
 
             //Routes for users_entity
 Route::get('/users', 'UserController@index')->name('user.index');
