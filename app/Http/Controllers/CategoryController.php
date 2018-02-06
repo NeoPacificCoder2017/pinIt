@@ -29,8 +29,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('categories.categories', compact('categories'));
+        return $categories = Category::all();
+        //return view('categories.categories', compact('categories'));
     }
 
     /**
@@ -55,6 +55,7 @@ class CategoryController extends Controller
         $category->user_id = $request->user_id;
         $category->title = $request->title;
         $category->save();
+
     }
 
     /**
@@ -65,8 +66,8 @@ class CategoryController extends Controller
      */
     public function show($categoryId)
     {
-        $category = Category::find($categoryId);
-        return view('categories.category')->with('category', $category);
+        return $category = Category::find($categoryId);
+        //return view('categories.category')->with('category', $category);
     }
 
     /**
@@ -95,6 +96,7 @@ class CategoryController extends Controller
         $category->user_id = $request->user_id;
         $category->title = $request->title;
         $category->save();
+
     }
 
     /**
@@ -107,5 +109,6 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
+
     }
 }

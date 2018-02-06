@@ -32,10 +32,11 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::all();
+        
         $categories = Category::all();
+        return $links = Link::all();
 
-        return view('home')->with(['links' => $links, 'categories' => $categories]);
+        //return view('home')->with(['links' => $links, 'categories' => $categories]);
     }
 
     /**
@@ -65,6 +66,7 @@ class LinkController extends Controller
         $link->picture = $request->picture;
         $link->category_id = $request->category_id;
         $link->save();
+
     }
 
     /**
@@ -75,8 +77,9 @@ class LinkController extends Controller
      */
     public function show($linkId)
     {
-        $link = Link::find($linkId);
-        return view('links.link')->with('link', $link);
+        return $link = Link::findOrFail($linkId);
+        //return view('links.link')->with('link', $link);
+
     }
 
     /**

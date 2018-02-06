@@ -15,9 +15,9 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-        $userTypes = UserType::all();
+        return $userTypes = UserType::all();
 
-        return view('userTypes.userTypes', compact('userTypes'));
+        //return view('userTypes.userTypes', compact('userTypes'));
     }
 
     /**
@@ -51,9 +51,9 @@ class UserTypeController extends Controller
      */
     public function show($id)
     {
-        $userType = UserType::find($id);
+        return $userType = UserType::findOrFail($id);
 
-        return view('userTypes.userType')->with('userType', $userType);
+        //return view('userTypes.userType')->with('userType', $userType);
     }
 
     /**
