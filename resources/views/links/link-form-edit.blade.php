@@ -8,7 +8,7 @@
                 <div class="panel-heading">Lien à modifier: {{$link->title}}</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('link.update', $link) }}">
+                    <form id="formEdit" class="form-horizontal" method="POST" action="{{ route('link.update', $link) }}">
                     {{ csrf_field('') }}
                     {{ method_field('PUT') }}
 
@@ -90,4 +90,43 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+
+$(function(){
+
+    /* $('#register').click(function() {
+        $('#myModal').modal();
+    }); */
+
+    $(document).on('submit', '#formEdit', function(e) {  
+        e.preventDefault();
+         
+        /* $('input+small').text('');
+        $('input').parent().removeClass('has-error'); */
+         
+        $.ajax({
+            method: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: "json",
+        });
+        /* .done(function(data) {
+            $('.alert-success').removeClass('hidden');
+            $('#myModal').modal('hide');
+        })
+        .fail(function(data) {
+            $.each(data.responseJSON, function (key, value) {
+                var input = '#formRegister input[name=' + key + ']';
+                $(input + '+small').text(value);
+                $(input).parent().addClass('has-error');
+            }); */
+        });
+    });
+
+})
+
+</script>
 @endsection

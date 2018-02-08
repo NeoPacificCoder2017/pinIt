@@ -40,6 +40,7 @@ trait AuthenticatesUsers
         }
 
         if ($this->attemptLogin($request)) {
+
             return $this->sendLoginResponse($request);
         }
 
@@ -101,8 +102,9 @@ trait AuthenticatesUsers
 
         $this->clearLoginAttempts($request);
 
-        return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath());
+        $this->authenticated($request, $this->guard()->user());
+
+        return redirect()->intended($this->redirectPath());
     }
 
     /**
@@ -114,7 +116,12 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        // $request = $user->
+        $user = $this->guard()->user();
+        $user->generateToken();
+
+        return response()->json([
+            'data' => $user->toArray(),
+        ]);
     }
 
     /**
@@ -150,11 +157,31 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
+        $user = Auth::guard('api')->user();
+
+        $this->getEmptyToken($user);
+
         $this->guard()->logout();
 
         $request->session()->invalidate();
 
         return redirect('/');
+    }
+
+    /**
+     * Delete the api_token
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getEmptyToken($user)
+    {        
+        if ($user) {
+            $user->api_token = null;
+            $user->save();
+        }
+
+        return response()->json(['data' => 'User logged out.'], 200);
     }
 
     /**

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Vos liens: {{$user->first_name}}</div>
+                <div class="panel-heading">Vos liens: <p id="userName"></p></div>
 
                 <div class="panel-body">
                     <table>                        
@@ -17,8 +17,8 @@
                                 <th colspan='3'>actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach($links as $link):
+                        <tbody id="userData">
+                            {{--  @foreach($links as $link):
                                 <tr>
                                     <td>{{$link->title}}</td>
                                     <td>{{$link->picture}}</td>
@@ -33,7 +33,7 @@
                                         {!! Form::submit('Supprimer') !!}                            
                                         {!! Form::close() !!}</td>
                                 </tr>
-                            @endforeach
+                            @endforeach  --}}
                         </tbody>
                     </table>
 
@@ -42,4 +42,36 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+
+<script>
+
+$(document).ready(function() {
+	$.ajax({
+		url: "http://pinit.christopher.npc/api/users/{{ $user->id }}",
+		type: "get",
+		datatype: "json",
+		success: function(data) {
+            var row = "<tr>"
+                        +"<td>" + data.id + "</td>"
+                        + "<td>" + data.last_name + "</td>"   
+                        + "<td>" + data.first_name + "</td>"   
+                        + "<td>" + data.email + "</td>"   
+                        + "<td>" + data.password + "</td>"   
+                        + "<td>" + data.user_type_id + "</td>"   
+                        + "<td>" + data.remember_token + "</td>"   
+                        + "<td>" + data.created_at + "</td>"   
+                        + "<td>" + data.updated_at + "</td>"
+                        + "</tr>"; 
+
+            $("#userName").html("'" + data.first_name + "'");    
+            $("#userData").append(row);
+		}
+	});
+});
+
+</script>
+
 @endsection

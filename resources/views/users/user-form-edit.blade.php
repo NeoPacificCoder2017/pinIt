@@ -1,12 +1,112 @@
-{!! Form::open(['route' => array('user.update', $user->id), 'method' => 'put']) !!}
+@extends('layouts.app')
 
-	<formcaption>formulaire de modification d'un utilisateur</formcaption><br />
-    last_name : <input type="text" name="last_name" value="{{$user->last_name}}" /><br />
-    first_name : <input type="text" name="first_name" value="{{$user->first_name}}" /><br />
-    email : <input type="mail" name="email" value="{{$user->email}}" /><br />
-    password : <input type="password" name="password" value="{{$user->password}}" /><br />
-    user_type_id : <input type="number" name="user_type_id" value="{{$user->user_type_id}}" /><br />
-    remember_token : <input type="text" name="remember_token" value="{{$user->remember_token}}" /><br />
-    <input type="submit" value="valider" />
+@section('content')
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Modifier un utilisateur</div>
 
-{!! Form::close() !!}
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="{{ route('user.apiUpdate', $user) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+
+                        {{--  <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">  --}}
+                            <label for="last_name" class="col-md-4 control-label">Nom</label>
+
+                            <div class="col-md-6">
+                                <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autofocus>
+
+                                {{--  @if ($errors->has('last_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif  --}}
+                            </div>
+                        {{--  </div>  --}}
+
+                        {{--  <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">  --}}
+                            <label for="first_name" class="col-md-4 control-label">Prénom</label>
+
+                            <div class="col-md-6">
+                                <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
+
+                                {{--  @if ($errors->has('first_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('first_name') }}</strong>
+                                    </span>
+                                @endif  --}}
+                            </div>
+                        {{--  </div>  --}}
+
+                        {{--  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  --}}
+                            <label for="email" class="col-md-4 control-label">Mail</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+                                {{--  @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif  --}}
+                            </div>
+                        {{--  </div>  --}}
+
+                        {{--  <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">  --}}
+                            {{--  <label for="password" class="col-md-4 control-label">Mot de passe</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>  --}}
+
+                                {{--  @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif  --}}
+                            {{--  </div>  --}}
+                        {{--  </div>  --}}
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Valider
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    
+                    {!! Form::open(['action' => array('UserController@apiDestroy', $user), 'method' => 'delete']) !!}
+                    {!! Form::submit('Supprimer') !!}                    
+                    {!! Form::close() !!}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('script')
+
+<script>
+
+$(document).ready(function() {
+	$.ajax({
+		url: "http://pinit.christopher.npc/api/users/{{ $user->id }}",
+		type: "get",
+		datatype: "json",
+		success: function(data) {
+            $("#last_name").attr('value', data.last_name);
+            $("#first_name").attr('value', data.first_name);
+            $("#email").attr('value', data.email);
+            $("#password").attr('value', data.password);
+		}
+	});
+});
+
+</script>
+
+@endsection

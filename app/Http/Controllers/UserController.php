@@ -18,8 +18,17 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        return view('users.users', ['users' => $users]);
+    }
 
-        return view('users.users', compact('users'));
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function apiIndex()
+    {
+        return User::all();
     }
 
     /**
@@ -29,7 +38,7 @@ class UserController extends Controller
      */
     public function new()
     {
-        return view('users.user-form-new');
+        return view('users.users');
     }
 
     /**
@@ -40,14 +49,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->last_name = $request->last_name;
-        $user->first_name = $request->first_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        if(!empty($request->user_type_id)) $user->user_type_id = $request->user_type_id;
-        $user->remember_token = $request->remember_token;
-        $user->save();
+        $user = User::create($request->all());
+        return redirect()->route('user.index');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function apiStore(Request $request)
+    {
+        $user = User::create($request->all());
+        return response()->json($user, 201);
+    }
+
+     /**
+     * Show the view for the user's datas.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getShowView($id)
+    {
+        $user = User::findOrFail($id);
+        return view('users.user', ['user' => $user]);
     }
 
     /**
@@ -56,11 +82,23 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::find($id);
-        $links = Link::where('user_id', $user->id)->get();
-        return view('users.user')->with(compact('user', 'links'));
+        return $user;
+        // $links = Link::where('user_id', $user->id)->get();
+        // return view('users.user')->with(compact('user', 'links'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function apiShow($id)
+    {
+        $user = User::findOrFail($id);
+        return $user;
     }
 
     /**
@@ -83,15 +121,30 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::find($id);
-        $user->last_name = $request->last_name;
-        $user->first_name = $request->first_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->user_type_id = $request->user_type_id;
-        $user->save();
+        // $user = User::findOrFail($id);
+        // $user->last_name = $request->last_name;
+        // $user->first_name = $request->first_name;
+        // $user->email = $request->email;
+        // $user->password = $request->password;
+        // $user->user_type_id = $request->user_type_id;
+        // $user->save();
+        $user->update($request->all());
+        return response()->json($user, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function apiUpdate(Request $request, User $user)
+    {
+        $user->update($request->all());
+        return response()->json($user, 200);
     }
 
     /**
@@ -100,15 +153,28 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
+        // $user = User::findOrFail($id);
 
         $user->delete();
 
-        $users = User::all();
+        // $users = User::all();
 
-        return view('users.users')->with('users', $users);
+        // return view('users.users')->with('users', $users);
+        return response()->json($user, 204);
 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function apiDestroy(User $user)
+    {
+        $user->delete();
+        return response()->json($user, 204);
     }
 }

@@ -27,6 +27,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /*
+     * Generate the token for the API authentication
+     */
+    public function generateToken()
+    {
+        $this->api_token = str_random(60);
+        $this->save();
+
+        return $this->api_token;
+    }
+
     /**
      * Get the user that owns the user type.
      */
@@ -46,8 +57,8 @@ class User extends Authenticatable
     /**
      * Get the links for the user.
      */
-    public function link()
+    public function links()
     {
-        return $this->belongsTo('App\Link');
+        return $this->hasMany('App\Link');
     }
 }

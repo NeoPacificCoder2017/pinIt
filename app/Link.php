@@ -19,9 +19,9 @@ class Link extends Model
    /**
     * Get the users of the link.
     */
-    public function users() 
+    public function user() 
     {
-        return $this->hasMany('App\User');
+        return $this->belongsTo('App\User');
     }
 
       /**

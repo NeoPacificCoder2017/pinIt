@@ -34,11 +34,21 @@
                     <a class="navbar-brand" href="{{ action('UserController@show', Auth::id()) }}">
                         {{ config('app.firstname', 'Mon Profil') }}
                     </a>
-
-                    @if(Auth::user()->userType()->first()->title == 'admin')
-                    <a class="navbar-brand" href="{{ action('UserController@index') }}">
-                        {{ config('app.firstname', 'Liste des utilisateurs') }}
-                    </a>
+                    
+                    @if(Auth::check())
+                        @if(Auth::user()->userType()->first()->title == 'admin')
+                        <a class="navbar-brand" href="{{ action('UserController@new') }}">
+                            {{ config('app.firstname', 'Liste des utilisateurs') }}
+                        </a>
+                        @endif
+                    @endif
+                    
+                    @if(Auth::check())
+                        @if(Auth::user()->userType()->first()->title == 'admin')
+                        <a class="navbar-brand" href="{{ action('UserTypeController@getIndexView') }}">
+                            {{ config('app.firstname', 'Liste des types d\'utilisateurs') }}
+                        </a>
+                        @endif
                     @endif
 
                 </div>
@@ -87,5 +97,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    
+    @yield('script')
+    
 </body>
 </html>
