@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//---------------------- friends_entity ------------------------//
+Route::apiResource('friends', 'FriendController');
