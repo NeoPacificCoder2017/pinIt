@@ -40,7 +40,8 @@ Route::delete('/users/{user}', 'UserController@apiDestroy')->name('user.apiDestr
 Route::get('/userTypes/index', 'UserTypeController@getIndexView')->name('userType.getIndexView');        
 Route::get('/userTypes', 'UserTypeController@apiIndex')->name('userType.apiIndex');        
 Route::get('/userTypes/new', 'UserTypeController@new')->name('userType.new');        
-Route::post('/userTypes', 'UserTypeController@apiStore')->name('userType.apiStore');          
+Route::post('/userTypes', 'UserTypeController@apiStore')->name('userType.apiStore');  
+Route::get('/userTypes/{userTypeId}', 'UserTypeController@apiShow')->name('userType.apiShow');        
 Route::get('/userTypes/{userTypeId}/edit', 'UserTypeController@edit')->name('userType.edit');        
 Route::put('/userTypes/{userType}', 'UserTypeController@apiUpdate')->name('userType.apiUpdate');        
 Route::delete('/userTypes/{userType}', 'UserTypeController@apiDestroy')->name('userType.apiDestroy'); 

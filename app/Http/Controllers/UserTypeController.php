@@ -87,6 +87,18 @@ class UserTypeController extends Controller
 
         return view('userTypes.userType')->with('userType', $userType);
     }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\UserType  $userType
+     * @return \Illuminate\Http\Response
+     */
+    public function apiShow($id)
+    {
+        $userType = UserType::findOrFail($id);
+        return $userType;
+    }
 
     /**
      * Show the form for editing the specified resource.
